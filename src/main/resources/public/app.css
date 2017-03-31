@@ -2,3 +2,12 @@
   border: dotted 1px black;
   background-color: skyblue;
 }
+
+.holdYa {
+  padding: 20px;
+}
+
+.inputBox {
+  width: 200px;
+  height: 200px;
+}
