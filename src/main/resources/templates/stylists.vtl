@@ -1,22 +1,24 @@
 <div class="holdYa">
   <div class="jumbotron">
-    <h2>S T Y L E S</h2>
-
-    <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li class="active"><a href="/stylists">Stylists</a></li>
-    </ol>
+    <h2>Our Stylists hold all the records</h2>
   </div>
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/stylists">Stylists</a></li>
+  </ol>
   <div class="row">
     <div class="col-md-6 stylists">
       #foreach($stylist in $stylists)
         <div class="panel panel-info">
             <h3><a href="/stylists/$stylist.getId()">$stylist.getName()</a></h3>
+            <form action="/stylists/$stylist.getId()/delete" method="post">
+              <button class="deleteButton" type="submit">delete</button>
+            </form>
         </div>
       #end
     </div>
     <div class="col-md-6 newStylist">
-      <form action="/add" method="post">
+      <form action="/stylists/add" method="post">
         <input type="text" name="name" placeholder="Enter name">
         <input class="inputBox" type="text" name="details" placeholder="Enter some details">
         <button type="submit" class="btn btn-info">Add Stylist</button>

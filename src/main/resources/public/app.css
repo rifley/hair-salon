@@ -1,10 +1,11 @@
 .marginBorder {
   border: dotted 1px black;
-  background-color: skyblue;
+  background-color: #7BE2FF;
 }
 
 .holdYa {
   padding: 20px;
+  height: 100vh;
 }
 
 textarea {
@@ -14,4 +15,25 @@ textarea {
   box-sizing: border-box;
   border: 2px solid salmon;
   resize: none;
+}
+
+#stylistEdit {
+  position: absolute;
+  align-self: baseline;
+}
+
+.deleteButton {
+  margin-left: 88%;
+}
+
+.clients h3{
+  margin-left: 35px;
+}
+
+.breadcrumb {
+  width: 400px;
+}
+
+#stylistEdit {
+  margin-left: 55%;
 }

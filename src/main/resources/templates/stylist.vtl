@@ -1,14 +1,16 @@
 <div class="holdYa">
   <div class="jumbotron">
     <h2>$stylist.getName()</h2>
-    <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/stylists">Stylists</a></li>
-      <li class="active"><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
-    </ol>
+    <h4>About: $stylist.getDetails()</h4>
     <p id="stylistEdit"><a href="/stylists/$stylist.getId()/edit">edit</a></p>
   </div>
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/stylists">Stylists</a></li>
+    <li class="active"><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
+  </ol>
   <div class="row">
+    <h5>Clients:</h5>
     <div class="col-md-6 clients">
       #foreach($client in $clients)
         <div class="panel panel-default">
@@ -20,7 +22,8 @@
       #end
     </div>
     <div class="col-md-6 newClient">
-      <form action="/addnew" method="post">
+      <h3>Add A Client</h3>
+      <form action="/stylists/clients/add" method="post">
         <input type="text" name="clientName" placeholder="Enter Client Name">
         <input class="inputBox" type="textarea" name="clientDetails" placeholder="Enter some details">
         <input name="stylistId" type="hidden" value="$stylist.getId()">
