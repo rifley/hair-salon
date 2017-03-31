@@ -29,6 +29,10 @@ public class Stylist {
     return id;
   }
 
+  public String getDetails() {
+    return details;
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO stylists (name, details) VALUES (:name, :details)";
@@ -58,6 +62,25 @@ public class Stylist {
     }
   }
 
+  public void updateDetails(String details) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET details = :details WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("details", details)
+        .addParameter("id", id)
+        .executeUpdate();
+
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stylists WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
 
 
 }

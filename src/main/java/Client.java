@@ -4,6 +4,7 @@ import java.util.List;
 public class Client {
   private String name;
   private String details;
+  private int stylist;
   private int id;
 
   public Client(String name, String details) {
@@ -27,6 +28,10 @@ public class Client {
   }
   public int getId() {
     return id;
+  }
+
+  public String getDetails() {
+    return details;
   }
 
   public void save() {
@@ -55,6 +60,26 @@ public class Client {
         .addParameter("id", id)
         .executeAndFetchFirst(Client.class);
       return stylist;
+    }
+  }
+
+  public void updateDetails(String details) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET details = :details WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("details", details)
+        .addParameter("id", id)
+        .executeUpdate();
+
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 

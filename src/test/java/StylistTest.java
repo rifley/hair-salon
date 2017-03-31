@@ -47,6 +47,25 @@ public class StylistTest {
     assertEquals(Stylist.find(secondStylist.getId()),secondStylist);
   }
 
+  @Test
+  public void update_updatesDetailsForStylists_true() {
+    Stylist newStylist = new Stylist("Lola", "la la la");
+    Stylist newerStylist = new Stylist("Lela", "lololol");
+    newStylist.save();
+    newerStylist.save();
+    newerStylist.updateDetails("fa fa fa");
+    assertEquals("fa fa fa", Stylist.find(newerStylist.getId()).getDetails());
+  }
+
+  @Test
+  public void delete_deletesStylist_true() {
+    Stylist newStylist = new Stylist("Ryan", "Works for free most days");
+    newStylist.save();
+    int oldStylistId = newStylist.getId();
+    newStylist.delete();
+    assertEquals(null, Stylist.find(oldStylistId));
+  }
+
 
 
 }

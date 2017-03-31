@@ -47,6 +47,21 @@ public class ClientTest {
     assertEquals(Client.find(secondClient.getId()),secondClient);
   }
 
+  @Test
+  public void updateDetails_updatesClientDetails_string() {
+    Client newClient = new Client("June", "Loves the Summer");
+    newClient.save();
+    newClient.updateDetails("Summer smells, Spring sings");
+    assertEquals("Summer smells, Spring sings", Client.find(newClient.getId()).getDetails());
+  }
 
+  @Test
+  public void delete_deletesClient_true() {
+    Client newClient = new Client("James", "Owns a rather large peach");
+    newClient.save();
+    int oldClientId = newClient.getId();
+    newClient.delete();
+    assertEquals(null, Client.find(oldClientId));
+  }
 
 }
