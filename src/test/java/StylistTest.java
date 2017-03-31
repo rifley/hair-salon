@@ -2,7 +2,7 @@ import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class StylistsTest {
+public class StylistTest {
 
   @Before
   public void setUp() {
@@ -12,9 +12,16 @@ public class StylistsTest {
   @After
   public void tearDown() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM name_of_your_table *;";
+      String sql = "DELETE FROM Stylists *;";
       con.createQuery(sql).executeUpdate();
     }
+  }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame() {
+    Stylist firstStylist = new Stylist("Todd", "Balding");
+    Stylist secondStylist = new Stylist("Todd", "Balding");
+    assertTrue(firstStylist.equals(secondStylist));
   }
 
 }
