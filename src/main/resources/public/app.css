@@ -7,7 +7,11 @@
   padding: 20px;
 }
 
-.inputBox {
+textarea {
   width: 200px;
   height: 200px;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 2px solid salmon;
+  resize: none;
 }

@@ -1,25 +1,28 @@
 <div class="holdYa">
   <div class="jumbotron">
     <h2>$stylist.getName()</h2>
-
     <ol class="breadcrumb">
       <li><a href="/">Home</a></li>
       <li><a href="/stylists">Stylists</a></li>
       <li class="active"><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
     </ol>
+    <p id="stylistEdit"><a href="/stylists/$stylist.getId()/edit">edit</a></p>
   </div>
   <div class="row">
-    <div class="col-md-6 stylists">
+    <div class="col-md-6 clients">
       #foreach($client in $clients)
-        <div class="panel panel-info">
+        <div class="panel panel-default">
             <h3><a href="/stylists/$stylist.getId()/clients/$client.getId()">$client.getName()</a></h3>
+            <form action="/stylists/$stylist.getId()/clients/$client.getId()/delete" method="post">
+              <button class="deleteButton" type="submit">delete</button>
+            </form>
         </div>
       #end
     </div>
-    <div class="col-md-6 newStylist">
+    <div class="col-md-6 newClient">
       <form action="/addnew" method="post">
-        <input type="text" name="clientName" placeholder="Enter name">
-        <input class="inputBox" type="text" name="clientDetails" placeholder="Enter some details">
+        <input type="text" name="clientName" placeholder="Enter Client Name">
+        <input class="inputBox" type="textarea" name="clientDetails" placeholder="Enter some details">
         <input name="stylistId" type="hidden" value="$stylist.getId()">
         <button type="submit" class="btn btn-info">Add Client</button>
       </form>

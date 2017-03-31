@@ -1,0 +1,17 @@
+<div class="holdYa">
+  <div class="jumbotron">
+    <h2>$client.getName()</h2>
+    <h4>$client.getDetails()</h4>
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/stylists">Stylists</a></li>
+      <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
+      <li><a href="/stylists/$stylist.getId()/clients/$client.getId()">$client.getName()</a></li>
+    </ol>
+  </div>
+  <form action="/stylists/$stylist.getId()/clients/$client.getId()/update" method="post">
+    <input type="text" name="clientName" value="$client.getName()">
+    <input type="text" name="clientDetails" value="$client.getDetails()">
+    <button type="submit" class="btn btn-success">Edit Info</button>
+  </form>
+</div>
