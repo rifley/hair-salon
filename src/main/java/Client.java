@@ -7,8 +7,9 @@ public class Client {
   private int stylist;
   private int id;
 
-  public Client(String name, String details) {
+  public Client(String name, int stylist, String details) {
     this.name = name;
+    this.stylist = stylist;
     this.details = details;
   }
 
@@ -36,10 +37,11 @@ public class Client {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients (name, details) VALUES (:name, :details)";
+      String sql = "INSERT INTO clients (name, stylist, details) VALUES (:name, :stylist, :details)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("details", this.details)
+        .addParameter("stylist", this.stylist)
         .executeUpdate()
         .getKey();
     }
